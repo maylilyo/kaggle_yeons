@@ -11,12 +11,10 @@ def to_nparray(s) :
 
 def main():
     path1 = f'./ensemble/submission3.csv'
-    # path2 = f'./ensemble/submission5.csv'
     path3 = f'./ensemble/submission7.csv'
     path4 = f'./ensemble/submission11.csv'
 
     df1 = pd.read_csv(path1)
-    # df2 = pd.read_csv(path2)
     df3 = pd.read_csv(path3)                                                        
     df4 = pd.read_csv(path4)
     
