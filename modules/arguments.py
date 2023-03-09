@@ -12,7 +12,7 @@ def get_args():
     parser.add_argument(
         "--seed", 
         type=int, 
-        default=42
+        default=1999
     )
     parser.add_argument(
         "--n_lags", 
@@ -31,6 +31,12 @@ def get_args():
         type=str, 
         default= '2017-08-15',
         help="End of training date"
+    )
+    parser.add_argument(
+        "--submission_name", 
+        type=int, 
+        default= 10,
+        help="submission 횟수에 따른 이름"
     )
     # epoch
     args = parser.parse_args()
