@@ -1,3 +1,5 @@
 data/*.csv
 *.csvs
 __pycache__
+result/*.csv
+*.csv
