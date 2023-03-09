@@ -95,7 +95,7 @@ def main(args):
     print('RMSLE for high value :', np.sqrt(msle(true_high, pred_high)))
     print('MAE for high value :', mae(true_high, pred_high))
 
-    #
+    # Fit Progress
     ymean = yfit_lnr.append(ypred_lnr)
     school = ymean.loc(axis = 1)['sales', :, 'SCHOOL AND OFFICE SUPPLIES']
     ymean = ymean.join(school.shift(1), rsuffix = 'lag1') # I'm also adding school lag for it's cyclic yearly.
@@ -109,7 +109,7 @@ def main(args):
     model.fit(x, y)
 
 
-
+    # Predict Progress
     y_pred = pd.DataFrame(model.predict(x), index=x.index, columns=y.columns)
     y_pred = y_pred.stack(['store_nbr', 'family']).clip(0.)
     y_ = y.stack(['store_nbr', 'family']).clip(0.)
@@ -123,7 +123,7 @@ def main(args):
 
     ypred = pd.DataFrame(model.predict(xtest), index = xtest.index, columns = y.columns).clip(0.)
     ypred = ypred.stack(['store_nbr', 'family'])
-    sub = pd.read_csv(f'{args.datapath}/data/sample_submission.csv')
+    sub = pd.read_csv(f'{args.datapath}/sample_submission.csv')
     sub['sales'] = ypred.values
     sub.to_csv('submission7.csv', index = False) # Submit
 
